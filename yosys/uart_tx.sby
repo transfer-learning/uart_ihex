@@ -1,0 +1,14 @@
+[options]
+mode prove
+
+[engines]
+smtbmc yices
+
+[script]
+read -formal -sv uart_tx.sv
+prep -top uart_tx
+
+[files]
+../rtl/uart_tx.sv
+
+

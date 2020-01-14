@@ -1,0 +1,20 @@
+module top(i_clk, i_rx, o_sseg);
+
+input i_clk, i_rx;
+output wire [6:0] o_sseg[0:1];
+
+wire rdy;
+wire [7:0] data;
+reg [7:0] buffer;
+
+uart_rx rx(i_clk, i_rx, rdy, data);
+
+always @(posedge i_clk) begin
+    if (rdy)
+        buffer <= data;
+end
+
+sevenSegmentDisp seg0(o_sseg[0], data[3:0]);
+sevenSegmentDisp seg1(o_sseg[1], data[7:4]);
+
+endmodule
