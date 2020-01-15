@@ -10,7 +10,7 @@ input wire [7:0] i_rx_data;
 input wire i_rx_stb;
 
 output reg [7:0] o_tx_data;
-output reg o_tx_stb;
+output wire o_tx_stb = state == EXEC_ACK;
 input wire i_tx_busy;
 
 function [3:0] hex_to_val;
@@ -61,6 +61,7 @@ reg [15:0] addr;
 reg [7:0] buffer_fill;
 reg filled_high;
 reg [7:0] cmp_sum;
+wire [7:0] computed_sum_tcmp = (~computed_sum + 1);
 
 always @(posedge i_clk) begin
     if (i_rx_stb) begin
@@ -126,7 +127,7 @@ always @(posedge i_clk) begin
     end
     if (state == EXEC2) begin
         if (!i_tx_busy) begin
-            o_tx_data <= computed_sum;
+            o_tx_data <= (computed_sum_tcmp == cmp_sum) ? "K" : "E";
             state <= EXEC_ACK;
         end
     end

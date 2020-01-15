@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top
-Tue Jan 14 21:41:56 2020
+Tue Jan 14 22:13:58 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -47,15 +47,15 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                          ;
 +------------------------------------+--------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jan 14 21:41:56 2020            ;
+; Analysis & Synthesis Status        ; Successful - Tue Jan 14 22:13:58 2020            ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name                      ; top                                              ;
 ; Top-level Entity Name              ; top                                              ;
 ; Family                             ; Cyclone II                                       ;
-; Total logic elements               ; 226                                              ;
-;     Total combinational functions  ; 217                                              ;
-;     Dedicated logic registers      ; 104                                              ;
-; Total registers                    ; 104                                              ;
+; Total logic elements               ; 2,338                                            ;
+;     Total combinational functions  ; 1,305                                            ;
+;     Dedicated logic registers      ; 1,158                                            ;
+; Total registers                    ; 1158                                             ;
 ; Total pins                         ; 25                                               ;
 ; Total virtual pins                 ; 0                                                ;
 ; Total memory bits                  ; 0                                                ;
@@ -69,10 +69,11 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                                     ; EP2C50F672C8       ;                    ;
+; Device                                                                     ; EP2C35F672C8       ;                    ;
 ; Top-level entity name                                                      ; top                ; top                ;
 ; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
-; Use smart compilation                                                      ; Off                ; Off                ;
+; Use smart compilation                                                      ; On                 ; Off                ;
+; Maximum processors allowed for parallel compilation                        ; All                ;                    ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
 ; Enable compact report table                                                ; Off                ; Off                ;
 ; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
@@ -184,28 +185,28 @@ applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 226   ;
+; Estimated Total logic elements              ; 2,338 ;
 ;                                             ;       ;
-; Total combinational functions               ; 217   ;
+; Total combinational functions               ; 1305  ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 93    ;
-;     -- 3 input functions                    ; 32    ;
-;     -- <=2 input functions                  ; 92    ;
+;     -- 4 input functions                    ; 1112  ;
+;     -- 3 input functions                    ; 70    ;
+;     -- <=2 input functions                  ; 123   ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 140   ;
-;     -- arithmetic mode                      ; 77    ;
+;     -- normal mode                          ; 1187  ;
+;     -- arithmetic mode                      ; 118   ;
 ;                                             ;       ;
-; Total registers                             ; 104   ;
-;     -- Dedicated logic registers            ; 104   ;
+; Total registers                             ; 1158  ;
+;     -- Dedicated logic registers            ; 1158  ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
 ; I/O pins                                    ; 25    ;
 ; Embedded Multiplier 9-bit elements          ; 0     ;
 ; Maximum fan-out node                        ; i_clk ;
-; Maximum fan-out                             ; 104   ;
-; Total fan-out                               ; 982   ;
-; Average fan-out                             ; 2.84  ;
+; Maximum fan-out                             ; 1158  ;
+; Total fan-out                               ; 8428  ;
+; Average fan-out                             ; 3.39  ;
 +---------------------------------------------+-------+
 
 
@@ -214,37 +215,1076 @@ applicable agreement for further details.
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name        ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
-; |top                       ; 217 (0)           ; 104 (0)      ; 0           ; 0            ; 0       ; 0         ; 25   ; 0            ; |top                       ; work         ;
-;    |ihex:hex|              ; 84 (84)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|ihex:hex              ; work         ;
+; |top                       ; 1305 (0)          ; 1158 (0)     ; 0           ; 0            ; 0       ; 0         ; 25   ; 0            ; |top                       ; work         ;
+;    |ihex:hex|              ; 1170 (1170)       ; 1074 (1074)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|ihex:hex              ; work         ;
 ;    |sevenSegmentDisp:seg2| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|sevenSegmentDisp:seg2 ; work         ;
-;    |uart_rx:rx|            ; 69 (69)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|uart_rx:rx            ; work         ;
-;    |uart_tx:tx|            ; 57 (57)           ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|uart_tx:tx            ; work         ;
+;    |uart_rx:rx|            ; 71 (71)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|uart_rx:rx            ; work         ;
+;    |uart_tx:tx|            ; 57 (57)           ; 37 (37)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|uart_tx:tx            ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; ihex:hex|addr[4..7,12..15]             ; Lost fanout                            ;
-; ihex:hex|o_tx_data[0..7]               ; Lost fanout                            ;
-; ihex:hex|cmd[4..7]                     ; Lost fanout                            ;
-; ihex:hex|computed_sum[0..7]            ; Lost fanout                            ;
-; uart_tx:tx|data[0..5,7]                ; Merged with uart_tx:tx|data[6]         ;
-; uart_tx:tx|data[6]                     ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 36 ;                                        ;
-+----------------------------------------+----------------------------------------+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++------------------------------------------+----------------------------------------+
+; Register name                            ; Reason for Removal                     ;
++------------------------------------------+----------------------------------------+
+; ihex:hex|o_tx_data[7]                    ; Stuck at GND due to stuck port data_in ;
+; ihex:hex|o_tx_data[6]                    ; Stuck at VCC due to stuck port data_in ;
+; ihex:hex|o_tx_data[4,5]                  ; Stuck at GND due to stuck port data_in ;
+; ihex:hex|o_tx_data[0]                    ; Stuck at VCC due to stuck port data_in ;
+; uart_tx:tx|data[6]                       ; Stuck at VCC due to stuck port data_in ;
+; uart_tx:tx|data[4,5]                     ; Stuck at GND due to stuck port data_in ;
+; uart_tx:tx|data[0]                       ; Stuck at VCC due to stuck port data_in ;
+; uart_tx:tx|data[7]                       ; Stuck at GND due to stuck port data_in ;
+; ihex:hex|o_tx_data[3]                    ; Merged with ihex:hex|o_tx_data[1]      ;
+; uart_tx:tx|data[3]                       ; Merged with uart_tx:tx|data[1]         ;
+; ihex:hex|o_tx_data[1]                    ; Merged with ihex:hex|o_tx_data[2]      ;
+; uart_tx:tx|data[1]                       ; Merged with uart_tx:tx|data[2]         ;
+; ihex:hex|buffer~0                        ; Lost fanout                            ;
+; ihex:hex|buffer~1                        ; Lost fanout                            ;
+; ihex:hex|buffer~2                        ; Lost fanout                            ;
+; ihex:hex|buffer~3                        ; Lost fanout                            ;
+; ihex:hex|buffer~8                        ; Lost fanout                            ;
+; ihex:hex|buffer~9                        ; Lost fanout                            ;
+; ihex:hex|buffer~10                       ; Lost fanout                            ;
+; ihex:hex|buffer~11                       ; Lost fanout                            ;
+; ihex:hex|buffer~16                       ; Lost fanout                            ;
+; ihex:hex|buffer~17                       ; Lost fanout                            ;
+; ihex:hex|buffer~18                       ; Lost fanout                            ;
+; ihex:hex|buffer~19                       ; Lost fanout                            ;
+; ihex:hex|buffer~24                       ; Lost fanout                            ;
+; ihex:hex|buffer~25                       ; Lost fanout                            ;
+; ihex:hex|buffer~26                       ; Lost fanout                            ;
+; ihex:hex|buffer~27                       ; Lost fanout                            ;
+; ihex:hex|buffer~32                       ; Lost fanout                            ;
+; ihex:hex|buffer~33                       ; Lost fanout                            ;
+; ihex:hex|buffer~34                       ; Lost fanout                            ;
+; ihex:hex|buffer~35                       ; Lost fanout                            ;
+; ihex:hex|buffer~40                       ; Lost fanout                            ;
+; ihex:hex|buffer~41                       ; Lost fanout                            ;
+; ihex:hex|buffer~42                       ; Lost fanout                            ;
+; ihex:hex|buffer~43                       ; Lost fanout                            ;
+; ihex:hex|buffer~48                       ; Lost fanout                            ;
+; ihex:hex|buffer~49                       ; Lost fanout                            ;
+; ihex:hex|buffer~50                       ; Lost fanout                            ;
+; ihex:hex|buffer~51                       ; Lost fanout                            ;
+; ihex:hex|buffer~56                       ; Lost fanout                            ;
+; ihex:hex|buffer~57                       ; Lost fanout                            ;
+; ihex:hex|buffer~58                       ; Lost fanout                            ;
+; ihex:hex|buffer~59                       ; Lost fanout                            ;
+; ihex:hex|buffer~64                       ; Lost fanout                            ;
+; ihex:hex|buffer~65                       ; Lost fanout                            ;
+; ihex:hex|buffer~66                       ; Lost fanout                            ;
+; ihex:hex|buffer~67                       ; Lost fanout                            ;
+; ihex:hex|buffer~72                       ; Lost fanout                            ;
+; ihex:hex|buffer~73                       ; Lost fanout                            ;
+; ihex:hex|buffer~74                       ; Lost fanout                            ;
+; ihex:hex|buffer~75                       ; Lost fanout                            ;
+; ihex:hex|buffer~80                       ; Lost fanout                            ;
+; ihex:hex|buffer~81                       ; Lost fanout                            ;
+; ihex:hex|buffer~82                       ; Lost fanout                            ;
+; ihex:hex|buffer~83                       ; Lost fanout                            ;
+; ihex:hex|buffer~88                       ; Lost fanout                            ;
+; ihex:hex|buffer~89                       ; Lost fanout                            ;
+; ihex:hex|buffer~90                       ; Lost fanout                            ;
+; ihex:hex|buffer~91                       ; Lost fanout                            ;
+; ihex:hex|buffer~96                       ; Lost fanout                            ;
+; ihex:hex|buffer~97                       ; Lost fanout                            ;
+; ihex:hex|buffer~98                       ; Lost fanout                            ;
+; ihex:hex|buffer~99                       ; Lost fanout                            ;
+; ihex:hex|buffer~104                      ; Lost fanout                            ;
+; ihex:hex|buffer~105                      ; Lost fanout                            ;
+; ihex:hex|buffer~106                      ; Lost fanout                            ;
+; ihex:hex|buffer~107                      ; Lost fanout                            ;
+; ihex:hex|buffer~112                      ; Lost fanout                            ;
+; ihex:hex|buffer~113                      ; Lost fanout                            ;
+; ihex:hex|buffer~114                      ; Lost fanout                            ;
+; ihex:hex|buffer~115                      ; Lost fanout                            ;
+; ihex:hex|buffer~120                      ; Lost fanout                            ;
+; ihex:hex|buffer~121                      ; Lost fanout                            ;
+; ihex:hex|buffer~122                      ; Lost fanout                            ;
+; ihex:hex|buffer~123                      ; Lost fanout                            ;
+; ihex:hex|buffer~128                      ; Lost fanout                            ;
+; ihex:hex|buffer~129                      ; Lost fanout                            ;
+; ihex:hex|buffer~130                      ; Lost fanout                            ;
+; ihex:hex|buffer~131                      ; Lost fanout                            ;
+; ihex:hex|buffer~136                      ; Lost fanout                            ;
+; ihex:hex|buffer~137                      ; Lost fanout                            ;
+; ihex:hex|buffer~138                      ; Lost fanout                            ;
+; ihex:hex|buffer~139                      ; Lost fanout                            ;
+; ihex:hex|buffer~144                      ; Lost fanout                            ;
+; ihex:hex|buffer~145                      ; Lost fanout                            ;
+; ihex:hex|buffer~146                      ; Lost fanout                            ;
+; ihex:hex|buffer~147                      ; Lost fanout                            ;
+; ihex:hex|buffer~152                      ; Lost fanout                            ;
+; ihex:hex|buffer~153                      ; Lost fanout                            ;
+; ihex:hex|buffer~154                      ; Lost fanout                            ;
+; ihex:hex|buffer~155                      ; Lost fanout                            ;
+; ihex:hex|buffer~160                      ; Lost fanout                            ;
+; ihex:hex|buffer~161                      ; Lost fanout                            ;
+; ihex:hex|buffer~162                      ; Lost fanout                            ;
+; ihex:hex|buffer~163                      ; Lost fanout                            ;
+; ihex:hex|buffer~168                      ; Lost fanout                            ;
+; ihex:hex|buffer~169                      ; Lost fanout                            ;
+; ihex:hex|buffer~170                      ; Lost fanout                            ;
+; ihex:hex|buffer~171                      ; Lost fanout                            ;
+; ihex:hex|buffer~176                      ; Lost fanout                            ;
+; ihex:hex|buffer~177                      ; Lost fanout                            ;
+; ihex:hex|buffer~178                      ; Lost fanout                            ;
+; ihex:hex|buffer~179                      ; Lost fanout                            ;
+; ihex:hex|buffer~184                      ; Lost fanout                            ;
+; ihex:hex|buffer~185                      ; Lost fanout                            ;
+; ihex:hex|buffer~186                      ; Lost fanout                            ;
+; ihex:hex|buffer~187                      ; Lost fanout                            ;
+; ihex:hex|buffer~192                      ; Lost fanout                            ;
+; ihex:hex|buffer~193                      ; Lost fanout                            ;
+; ihex:hex|buffer~194                      ; Lost fanout                            ;
+; ihex:hex|buffer~195                      ; Lost fanout                            ;
+; ihex:hex|buffer~200                      ; Lost fanout                            ;
+; ihex:hex|buffer~201                      ; Lost fanout                            ;
+; ihex:hex|buffer~202                      ; Lost fanout                            ;
+; ihex:hex|buffer~203                      ; Lost fanout                            ;
+; ihex:hex|buffer~208                      ; Lost fanout                            ;
+; ihex:hex|buffer~209                      ; Lost fanout                            ;
+; ihex:hex|buffer~210                      ; Lost fanout                            ;
+; ihex:hex|buffer~211                      ; Lost fanout                            ;
+; ihex:hex|buffer~216                      ; Lost fanout                            ;
+; ihex:hex|buffer~217                      ; Lost fanout                            ;
+; ihex:hex|buffer~218                      ; Lost fanout                            ;
+; ihex:hex|buffer~219                      ; Lost fanout                            ;
+; ihex:hex|buffer~224                      ; Lost fanout                            ;
+; ihex:hex|buffer~225                      ; Lost fanout                            ;
+; ihex:hex|buffer~226                      ; Lost fanout                            ;
+; ihex:hex|buffer~227                      ; Lost fanout                            ;
+; ihex:hex|buffer~232                      ; Lost fanout                            ;
+; ihex:hex|buffer~233                      ; Lost fanout                            ;
+; ihex:hex|buffer~234                      ; Lost fanout                            ;
+; ihex:hex|buffer~235                      ; Lost fanout                            ;
+; ihex:hex|buffer~240                      ; Lost fanout                            ;
+; ihex:hex|buffer~241                      ; Lost fanout                            ;
+; ihex:hex|buffer~242                      ; Lost fanout                            ;
+; ihex:hex|buffer~243                      ; Lost fanout                            ;
+; ihex:hex|buffer~248                      ; Lost fanout                            ;
+; ihex:hex|buffer~249                      ; Lost fanout                            ;
+; ihex:hex|buffer~250                      ; Lost fanout                            ;
+; ihex:hex|buffer~251                      ; Lost fanout                            ;
+; ihex:hex|buffer~256                      ; Lost fanout                            ;
+; ihex:hex|buffer~257                      ; Lost fanout                            ;
+; ihex:hex|buffer~258                      ; Lost fanout                            ;
+; ihex:hex|buffer~259                      ; Lost fanout                            ;
+; ihex:hex|buffer~264                      ; Lost fanout                            ;
+; ihex:hex|buffer~265                      ; Lost fanout                            ;
+; ihex:hex|buffer~266                      ; Lost fanout                            ;
+; ihex:hex|buffer~267                      ; Lost fanout                            ;
+; ihex:hex|buffer~272                      ; Lost fanout                            ;
+; ihex:hex|buffer~273                      ; Lost fanout                            ;
+; ihex:hex|buffer~274                      ; Lost fanout                            ;
+; ihex:hex|buffer~275                      ; Lost fanout                            ;
+; ihex:hex|buffer~280                      ; Lost fanout                            ;
+; ihex:hex|buffer~281                      ; Lost fanout                            ;
+; ihex:hex|buffer~282                      ; Lost fanout                            ;
+; ihex:hex|buffer~283                      ; Lost fanout                            ;
+; ihex:hex|buffer~288                      ; Lost fanout                            ;
+; ihex:hex|buffer~289                      ; Lost fanout                            ;
+; ihex:hex|buffer~290                      ; Lost fanout                            ;
+; ihex:hex|buffer~291                      ; Lost fanout                            ;
+; ihex:hex|buffer~296                      ; Lost fanout                            ;
+; ihex:hex|buffer~297                      ; Lost fanout                            ;
+; ihex:hex|buffer~298                      ; Lost fanout                            ;
+; ihex:hex|buffer~299                      ; Lost fanout                            ;
+; ihex:hex|buffer~304                      ; Lost fanout                            ;
+; ihex:hex|buffer~305                      ; Lost fanout                            ;
+; ihex:hex|buffer~306                      ; Lost fanout                            ;
+; ihex:hex|buffer~307                      ; Lost fanout                            ;
+; ihex:hex|buffer~312                      ; Lost fanout                            ;
+; ihex:hex|buffer~313                      ; Lost fanout                            ;
+; ihex:hex|buffer~314                      ; Lost fanout                            ;
+; ihex:hex|buffer~315                      ; Lost fanout                            ;
+; ihex:hex|buffer~320                      ; Lost fanout                            ;
+; ihex:hex|buffer~321                      ; Lost fanout                            ;
+; ihex:hex|buffer~322                      ; Lost fanout                            ;
+; ihex:hex|buffer~323                      ; Lost fanout                            ;
+; ihex:hex|buffer~328                      ; Lost fanout                            ;
+; ihex:hex|buffer~329                      ; Lost fanout                            ;
+; ihex:hex|buffer~330                      ; Lost fanout                            ;
+; ihex:hex|buffer~331                      ; Lost fanout                            ;
+; ihex:hex|buffer~336                      ; Lost fanout                            ;
+; ihex:hex|buffer~337                      ; Lost fanout                            ;
+; ihex:hex|buffer~338                      ; Lost fanout                            ;
+; ihex:hex|buffer~339                      ; Lost fanout                            ;
+; ihex:hex|buffer~344                      ; Lost fanout                            ;
+; ihex:hex|buffer~345                      ; Lost fanout                            ;
+; ihex:hex|buffer~346                      ; Lost fanout                            ;
+; ihex:hex|buffer~347                      ; Lost fanout                            ;
+; ihex:hex|buffer~352                      ; Lost fanout                            ;
+; ihex:hex|buffer~353                      ; Lost fanout                            ;
+; ihex:hex|buffer~354                      ; Lost fanout                            ;
+; ihex:hex|buffer~355                      ; Lost fanout                            ;
+; ihex:hex|buffer~360                      ; Lost fanout                            ;
+; ihex:hex|buffer~361                      ; Lost fanout                            ;
+; ihex:hex|buffer~362                      ; Lost fanout                            ;
+; ihex:hex|buffer~363                      ; Lost fanout                            ;
+; ihex:hex|buffer~368                      ; Lost fanout                            ;
+; ihex:hex|buffer~369                      ; Lost fanout                            ;
+; ihex:hex|buffer~370                      ; Lost fanout                            ;
+; ihex:hex|buffer~371                      ; Lost fanout                            ;
+; ihex:hex|buffer~376                      ; Lost fanout                            ;
+; ihex:hex|buffer~377                      ; Lost fanout                            ;
+; ihex:hex|buffer~378                      ; Lost fanout                            ;
+; ihex:hex|buffer~379                      ; Lost fanout                            ;
+; ihex:hex|buffer~384                      ; Lost fanout                            ;
+; ihex:hex|buffer~385                      ; Lost fanout                            ;
+; ihex:hex|buffer~386                      ; Lost fanout                            ;
+; ihex:hex|buffer~387                      ; Lost fanout                            ;
+; ihex:hex|buffer~392                      ; Lost fanout                            ;
+; ihex:hex|buffer~393                      ; Lost fanout                            ;
+; ihex:hex|buffer~394                      ; Lost fanout                            ;
+; ihex:hex|buffer~395                      ; Lost fanout                            ;
+; ihex:hex|buffer~400                      ; Lost fanout                            ;
+; ihex:hex|buffer~401                      ; Lost fanout                            ;
+; ihex:hex|buffer~402                      ; Lost fanout                            ;
+; ihex:hex|buffer~403                      ; Lost fanout                            ;
+; ihex:hex|buffer~408                      ; Lost fanout                            ;
+; ihex:hex|buffer~409                      ; Lost fanout                            ;
+; ihex:hex|buffer~410                      ; Lost fanout                            ;
+; ihex:hex|buffer~411                      ; Lost fanout                            ;
+; ihex:hex|buffer~416                      ; Lost fanout                            ;
+; ihex:hex|buffer~417                      ; Lost fanout                            ;
+; ihex:hex|buffer~418                      ; Lost fanout                            ;
+; ihex:hex|buffer~419                      ; Lost fanout                            ;
+; ihex:hex|buffer~424                      ; Lost fanout                            ;
+; ihex:hex|buffer~425                      ; Lost fanout                            ;
+; ihex:hex|buffer~426                      ; Lost fanout                            ;
+; ihex:hex|buffer~427                      ; Lost fanout                            ;
+; ihex:hex|buffer~432                      ; Lost fanout                            ;
+; ihex:hex|buffer~433                      ; Lost fanout                            ;
+; ihex:hex|buffer~434                      ; Lost fanout                            ;
+; ihex:hex|buffer~435                      ; Lost fanout                            ;
+; ihex:hex|buffer~440                      ; Lost fanout                            ;
+; ihex:hex|buffer~441                      ; Lost fanout                            ;
+; ihex:hex|buffer~442                      ; Lost fanout                            ;
+; ihex:hex|buffer~443                      ; Lost fanout                            ;
+; ihex:hex|buffer~448                      ; Lost fanout                            ;
+; ihex:hex|buffer~449                      ; Lost fanout                            ;
+; ihex:hex|buffer~450                      ; Lost fanout                            ;
+; ihex:hex|buffer~451                      ; Lost fanout                            ;
+; ihex:hex|buffer~456                      ; Lost fanout                            ;
+; ihex:hex|buffer~457                      ; Lost fanout                            ;
+; ihex:hex|buffer~458                      ; Lost fanout                            ;
+; ihex:hex|buffer~459                      ; Lost fanout                            ;
+; ihex:hex|buffer~464                      ; Lost fanout                            ;
+; ihex:hex|buffer~465                      ; Lost fanout                            ;
+; ihex:hex|buffer~466                      ; Lost fanout                            ;
+; ihex:hex|buffer~467                      ; Lost fanout                            ;
+; ihex:hex|buffer~472                      ; Lost fanout                            ;
+; ihex:hex|buffer~473                      ; Lost fanout                            ;
+; ihex:hex|buffer~474                      ; Lost fanout                            ;
+; ihex:hex|buffer~475                      ; Lost fanout                            ;
+; ihex:hex|buffer~480                      ; Lost fanout                            ;
+; ihex:hex|buffer~481                      ; Lost fanout                            ;
+; ihex:hex|buffer~482                      ; Lost fanout                            ;
+; ihex:hex|buffer~483                      ; Lost fanout                            ;
+; ihex:hex|buffer~488                      ; Lost fanout                            ;
+; ihex:hex|buffer~489                      ; Lost fanout                            ;
+; ihex:hex|buffer~490                      ; Lost fanout                            ;
+; ihex:hex|buffer~491                      ; Lost fanout                            ;
+; ihex:hex|buffer~496                      ; Lost fanout                            ;
+; ihex:hex|buffer~497                      ; Lost fanout                            ;
+; ihex:hex|buffer~498                      ; Lost fanout                            ;
+; ihex:hex|buffer~499                      ; Lost fanout                            ;
+; ihex:hex|buffer~504                      ; Lost fanout                            ;
+; ihex:hex|buffer~505                      ; Lost fanout                            ;
+; ihex:hex|buffer~506                      ; Lost fanout                            ;
+; ihex:hex|buffer~507                      ; Lost fanout                            ;
+; ihex:hex|buffer~512                      ; Lost fanout                            ;
+; ihex:hex|buffer~513                      ; Lost fanout                            ;
+; ihex:hex|buffer~514                      ; Lost fanout                            ;
+; ihex:hex|buffer~515                      ; Lost fanout                            ;
+; ihex:hex|buffer~520                      ; Lost fanout                            ;
+; ihex:hex|buffer~521                      ; Lost fanout                            ;
+; ihex:hex|buffer~522                      ; Lost fanout                            ;
+; ihex:hex|buffer~523                      ; Lost fanout                            ;
+; ihex:hex|buffer~528                      ; Lost fanout                            ;
+; ihex:hex|buffer~529                      ; Lost fanout                            ;
+; ihex:hex|buffer~530                      ; Lost fanout                            ;
+; ihex:hex|buffer~531                      ; Lost fanout                            ;
+; ihex:hex|buffer~536                      ; Lost fanout                            ;
+; ihex:hex|buffer~537                      ; Lost fanout                            ;
+; ihex:hex|buffer~538                      ; Lost fanout                            ;
+; ihex:hex|buffer~539                      ; Lost fanout                            ;
+; ihex:hex|buffer~544                      ; Lost fanout                            ;
+; ihex:hex|buffer~545                      ; Lost fanout                            ;
+; ihex:hex|buffer~546                      ; Lost fanout                            ;
+; ihex:hex|buffer~547                      ; Lost fanout                            ;
+; ihex:hex|buffer~552                      ; Lost fanout                            ;
+; ihex:hex|buffer~553                      ; Lost fanout                            ;
+; ihex:hex|buffer~554                      ; Lost fanout                            ;
+; ihex:hex|buffer~555                      ; Lost fanout                            ;
+; ihex:hex|buffer~560                      ; Lost fanout                            ;
+; ihex:hex|buffer~561                      ; Lost fanout                            ;
+; ihex:hex|buffer~562                      ; Lost fanout                            ;
+; ihex:hex|buffer~563                      ; Lost fanout                            ;
+; ihex:hex|buffer~568                      ; Lost fanout                            ;
+; ihex:hex|buffer~569                      ; Lost fanout                            ;
+; ihex:hex|buffer~570                      ; Lost fanout                            ;
+; ihex:hex|buffer~571                      ; Lost fanout                            ;
+; ihex:hex|buffer~576                      ; Lost fanout                            ;
+; ihex:hex|buffer~577                      ; Lost fanout                            ;
+; ihex:hex|buffer~578                      ; Lost fanout                            ;
+; ihex:hex|buffer~579                      ; Lost fanout                            ;
+; ihex:hex|buffer~584                      ; Lost fanout                            ;
+; ihex:hex|buffer~585                      ; Lost fanout                            ;
+; ihex:hex|buffer~586                      ; Lost fanout                            ;
+; ihex:hex|buffer~587                      ; Lost fanout                            ;
+; ihex:hex|buffer~592                      ; Lost fanout                            ;
+; ihex:hex|buffer~593                      ; Lost fanout                            ;
+; ihex:hex|buffer~594                      ; Lost fanout                            ;
+; ihex:hex|buffer~595                      ; Lost fanout                            ;
+; ihex:hex|buffer~600                      ; Lost fanout                            ;
+; ihex:hex|buffer~601                      ; Lost fanout                            ;
+; ihex:hex|buffer~602                      ; Lost fanout                            ;
+; ihex:hex|buffer~603                      ; Lost fanout                            ;
+; ihex:hex|buffer~608                      ; Lost fanout                            ;
+; ihex:hex|buffer~609                      ; Lost fanout                            ;
+; ihex:hex|buffer~610                      ; Lost fanout                            ;
+; ihex:hex|buffer~611                      ; Lost fanout                            ;
+; ihex:hex|buffer~616                      ; Lost fanout                            ;
+; ihex:hex|buffer~617                      ; Lost fanout                            ;
+; ihex:hex|buffer~618                      ; Lost fanout                            ;
+; ihex:hex|buffer~619                      ; Lost fanout                            ;
+; ihex:hex|buffer~624                      ; Lost fanout                            ;
+; ihex:hex|buffer~625                      ; Lost fanout                            ;
+; ihex:hex|buffer~626                      ; Lost fanout                            ;
+; ihex:hex|buffer~627                      ; Lost fanout                            ;
+; ihex:hex|buffer~632                      ; Lost fanout                            ;
+; ihex:hex|buffer~633                      ; Lost fanout                            ;
+; ihex:hex|buffer~634                      ; Lost fanout                            ;
+; ihex:hex|buffer~635                      ; Lost fanout                            ;
+; ihex:hex|buffer~640                      ; Lost fanout                            ;
+; ihex:hex|buffer~641                      ; Lost fanout                            ;
+; ihex:hex|buffer~642                      ; Lost fanout                            ;
+; ihex:hex|buffer~643                      ; Lost fanout                            ;
+; ihex:hex|buffer~648                      ; Lost fanout                            ;
+; ihex:hex|buffer~649                      ; Lost fanout                            ;
+; ihex:hex|buffer~650                      ; Lost fanout                            ;
+; ihex:hex|buffer~651                      ; Lost fanout                            ;
+; ihex:hex|buffer~656                      ; Lost fanout                            ;
+; ihex:hex|buffer~657                      ; Lost fanout                            ;
+; ihex:hex|buffer~658                      ; Lost fanout                            ;
+; ihex:hex|buffer~659                      ; Lost fanout                            ;
+; ihex:hex|buffer~664                      ; Lost fanout                            ;
+; ihex:hex|buffer~665                      ; Lost fanout                            ;
+; ihex:hex|buffer~666                      ; Lost fanout                            ;
+; ihex:hex|buffer~667                      ; Lost fanout                            ;
+; ihex:hex|buffer~672                      ; Lost fanout                            ;
+; ihex:hex|buffer~673                      ; Lost fanout                            ;
+; ihex:hex|buffer~674                      ; Lost fanout                            ;
+; ihex:hex|buffer~675                      ; Lost fanout                            ;
+; ihex:hex|buffer~680                      ; Lost fanout                            ;
+; ihex:hex|buffer~681                      ; Lost fanout                            ;
+; ihex:hex|buffer~682                      ; Lost fanout                            ;
+; ihex:hex|buffer~683                      ; Lost fanout                            ;
+; ihex:hex|buffer~688                      ; Lost fanout                            ;
+; ihex:hex|buffer~689                      ; Lost fanout                            ;
+; ihex:hex|buffer~690                      ; Lost fanout                            ;
+; ihex:hex|buffer~691                      ; Lost fanout                            ;
+; ihex:hex|buffer~696                      ; Lost fanout                            ;
+; ihex:hex|buffer~697                      ; Lost fanout                            ;
+; ihex:hex|buffer~698                      ; Lost fanout                            ;
+; ihex:hex|buffer~699                      ; Lost fanout                            ;
+; ihex:hex|buffer~704                      ; Lost fanout                            ;
+; ihex:hex|buffer~705                      ; Lost fanout                            ;
+; ihex:hex|buffer~706                      ; Lost fanout                            ;
+; ihex:hex|buffer~707                      ; Lost fanout                            ;
+; ihex:hex|buffer~712                      ; Lost fanout                            ;
+; ihex:hex|buffer~713                      ; Lost fanout                            ;
+; ihex:hex|buffer~714                      ; Lost fanout                            ;
+; ihex:hex|buffer~715                      ; Lost fanout                            ;
+; ihex:hex|buffer~720                      ; Lost fanout                            ;
+; ihex:hex|buffer~721                      ; Lost fanout                            ;
+; ihex:hex|buffer~722                      ; Lost fanout                            ;
+; ihex:hex|buffer~723                      ; Lost fanout                            ;
+; ihex:hex|buffer~728                      ; Lost fanout                            ;
+; ihex:hex|buffer~729                      ; Lost fanout                            ;
+; ihex:hex|buffer~730                      ; Lost fanout                            ;
+; ihex:hex|buffer~731                      ; Lost fanout                            ;
+; ihex:hex|buffer~736                      ; Lost fanout                            ;
+; ihex:hex|buffer~737                      ; Lost fanout                            ;
+; ihex:hex|buffer~738                      ; Lost fanout                            ;
+; ihex:hex|buffer~739                      ; Lost fanout                            ;
+; ihex:hex|buffer~744                      ; Lost fanout                            ;
+; ihex:hex|buffer~745                      ; Lost fanout                            ;
+; ihex:hex|buffer~746                      ; Lost fanout                            ;
+; ihex:hex|buffer~747                      ; Lost fanout                            ;
+; ihex:hex|buffer~752                      ; Lost fanout                            ;
+; ihex:hex|buffer~753                      ; Lost fanout                            ;
+; ihex:hex|buffer~754                      ; Lost fanout                            ;
+; ihex:hex|buffer~755                      ; Lost fanout                            ;
+; ihex:hex|buffer~760                      ; Lost fanout                            ;
+; ihex:hex|buffer~761                      ; Lost fanout                            ;
+; ihex:hex|buffer~762                      ; Lost fanout                            ;
+; ihex:hex|buffer~763                      ; Lost fanout                            ;
+; ihex:hex|buffer~768                      ; Lost fanout                            ;
+; ihex:hex|buffer~769                      ; Lost fanout                            ;
+; ihex:hex|buffer~770                      ; Lost fanout                            ;
+; ihex:hex|buffer~771                      ; Lost fanout                            ;
+; ihex:hex|buffer~776                      ; Lost fanout                            ;
+; ihex:hex|buffer~777                      ; Lost fanout                            ;
+; ihex:hex|buffer~778                      ; Lost fanout                            ;
+; ihex:hex|buffer~779                      ; Lost fanout                            ;
+; ihex:hex|buffer~784                      ; Lost fanout                            ;
+; ihex:hex|buffer~785                      ; Lost fanout                            ;
+; ihex:hex|buffer~786                      ; Lost fanout                            ;
+; ihex:hex|buffer~787                      ; Lost fanout                            ;
+; ihex:hex|buffer~792                      ; Lost fanout                            ;
+; ihex:hex|buffer~793                      ; Lost fanout                            ;
+; ihex:hex|buffer~794                      ; Lost fanout                            ;
+; ihex:hex|buffer~795                      ; Lost fanout                            ;
+; ihex:hex|buffer~800                      ; Lost fanout                            ;
+; ihex:hex|buffer~801                      ; Lost fanout                            ;
+; ihex:hex|buffer~802                      ; Lost fanout                            ;
+; ihex:hex|buffer~803                      ; Lost fanout                            ;
+; ihex:hex|buffer~808                      ; Lost fanout                            ;
+; ihex:hex|buffer~809                      ; Lost fanout                            ;
+; ihex:hex|buffer~810                      ; Lost fanout                            ;
+; ihex:hex|buffer~811                      ; Lost fanout                            ;
+; ihex:hex|buffer~816                      ; Lost fanout                            ;
+; ihex:hex|buffer~817                      ; Lost fanout                            ;
+; ihex:hex|buffer~818                      ; Lost fanout                            ;
+; ihex:hex|buffer~819                      ; Lost fanout                            ;
+; ihex:hex|buffer~824                      ; Lost fanout                            ;
+; ihex:hex|buffer~825                      ; Lost fanout                            ;
+; ihex:hex|buffer~826                      ; Lost fanout                            ;
+; ihex:hex|buffer~827                      ; Lost fanout                            ;
+; ihex:hex|buffer~832                      ; Lost fanout                            ;
+; ihex:hex|buffer~833                      ; Lost fanout                            ;
+; ihex:hex|buffer~834                      ; Lost fanout                            ;
+; ihex:hex|buffer~835                      ; Lost fanout                            ;
+; ihex:hex|buffer~840                      ; Lost fanout                            ;
+; ihex:hex|buffer~841                      ; Lost fanout                            ;
+; ihex:hex|buffer~842                      ; Lost fanout                            ;
+; ihex:hex|buffer~843                      ; Lost fanout                            ;
+; ihex:hex|buffer~848                      ; Lost fanout                            ;
+; ihex:hex|buffer~849                      ; Lost fanout                            ;
+; ihex:hex|buffer~850                      ; Lost fanout                            ;
+; ihex:hex|buffer~851                      ; Lost fanout                            ;
+; ihex:hex|buffer~856                      ; Lost fanout                            ;
+; ihex:hex|buffer~857                      ; Lost fanout                            ;
+; ihex:hex|buffer~858                      ; Lost fanout                            ;
+; ihex:hex|buffer~859                      ; Lost fanout                            ;
+; ihex:hex|buffer~864                      ; Lost fanout                            ;
+; ihex:hex|buffer~865                      ; Lost fanout                            ;
+; ihex:hex|buffer~866                      ; Lost fanout                            ;
+; ihex:hex|buffer~867                      ; Lost fanout                            ;
+; ihex:hex|buffer~872                      ; Lost fanout                            ;
+; ihex:hex|buffer~873                      ; Lost fanout                            ;
+; ihex:hex|buffer~874                      ; Lost fanout                            ;
+; ihex:hex|buffer~875                      ; Lost fanout                            ;
+; ihex:hex|buffer~880                      ; Lost fanout                            ;
+; ihex:hex|buffer~881                      ; Lost fanout                            ;
+; ihex:hex|buffer~882                      ; Lost fanout                            ;
+; ihex:hex|buffer~883                      ; Lost fanout                            ;
+; ihex:hex|buffer~888                      ; Lost fanout                            ;
+; ihex:hex|buffer~889                      ; Lost fanout                            ;
+; ihex:hex|buffer~890                      ; Lost fanout                            ;
+; ihex:hex|buffer~891                      ; Lost fanout                            ;
+; ihex:hex|buffer~896                      ; Lost fanout                            ;
+; ihex:hex|buffer~897                      ; Lost fanout                            ;
+; ihex:hex|buffer~898                      ; Lost fanout                            ;
+; ihex:hex|buffer~899                      ; Lost fanout                            ;
+; ihex:hex|buffer~904                      ; Lost fanout                            ;
+; ihex:hex|buffer~905                      ; Lost fanout                            ;
+; ihex:hex|buffer~906                      ; Lost fanout                            ;
+; ihex:hex|buffer~907                      ; Lost fanout                            ;
+; ihex:hex|buffer~912                      ; Lost fanout                            ;
+; ihex:hex|buffer~913                      ; Lost fanout                            ;
+; ihex:hex|buffer~914                      ; Lost fanout                            ;
+; ihex:hex|buffer~915                      ; Lost fanout                            ;
+; ihex:hex|buffer~920                      ; Lost fanout                            ;
+; ihex:hex|buffer~921                      ; Lost fanout                            ;
+; ihex:hex|buffer~922                      ; Lost fanout                            ;
+; ihex:hex|buffer~923                      ; Lost fanout                            ;
+; ihex:hex|buffer~928                      ; Lost fanout                            ;
+; ihex:hex|buffer~929                      ; Lost fanout                            ;
+; ihex:hex|buffer~930                      ; Lost fanout                            ;
+; ihex:hex|buffer~931                      ; Lost fanout                            ;
+; ihex:hex|buffer~936                      ; Lost fanout                            ;
+; ihex:hex|buffer~937                      ; Lost fanout                            ;
+; ihex:hex|buffer~938                      ; Lost fanout                            ;
+; ihex:hex|buffer~939                      ; Lost fanout                            ;
+; ihex:hex|buffer~944                      ; Lost fanout                            ;
+; ihex:hex|buffer~945                      ; Lost fanout                            ;
+; ihex:hex|buffer~946                      ; Lost fanout                            ;
+; ihex:hex|buffer~947                      ; Lost fanout                            ;
+; ihex:hex|buffer~952                      ; Lost fanout                            ;
+; ihex:hex|buffer~953                      ; Lost fanout                            ;
+; ihex:hex|buffer~954                      ; Lost fanout                            ;
+; ihex:hex|buffer~955                      ; Lost fanout                            ;
+; ihex:hex|buffer~960                      ; Lost fanout                            ;
+; ihex:hex|buffer~961                      ; Lost fanout                            ;
+; ihex:hex|buffer~962                      ; Lost fanout                            ;
+; ihex:hex|buffer~963                      ; Lost fanout                            ;
+; ihex:hex|buffer~968                      ; Lost fanout                            ;
+; ihex:hex|buffer~969                      ; Lost fanout                            ;
+; ihex:hex|buffer~970                      ; Lost fanout                            ;
+; ihex:hex|buffer~971                      ; Lost fanout                            ;
+; ihex:hex|buffer~976                      ; Lost fanout                            ;
+; ihex:hex|buffer~977                      ; Lost fanout                            ;
+; ihex:hex|buffer~978                      ; Lost fanout                            ;
+; ihex:hex|buffer~979                      ; Lost fanout                            ;
+; ihex:hex|buffer~984                      ; Lost fanout                            ;
+; ihex:hex|buffer~985                      ; Lost fanout                            ;
+; ihex:hex|buffer~986                      ; Lost fanout                            ;
+; ihex:hex|buffer~987                      ; Lost fanout                            ;
+; ihex:hex|buffer~992                      ; Lost fanout                            ;
+; ihex:hex|buffer~993                      ; Lost fanout                            ;
+; ihex:hex|buffer~994                      ; Lost fanout                            ;
+; ihex:hex|buffer~995                      ; Lost fanout                            ;
+; ihex:hex|buffer~1000                     ; Lost fanout                            ;
+; ihex:hex|buffer~1001                     ; Lost fanout                            ;
+; ihex:hex|buffer~1002                     ; Lost fanout                            ;
+; ihex:hex|buffer~1003                     ; Lost fanout                            ;
+; ihex:hex|buffer~1008                     ; Lost fanout                            ;
+; ihex:hex|buffer~1009                     ; Lost fanout                            ;
+; ihex:hex|buffer~1010                     ; Lost fanout                            ;
+; ihex:hex|buffer~1011                     ; Lost fanout                            ;
+; ihex:hex|buffer~1016                     ; Lost fanout                            ;
+; ihex:hex|buffer~1017                     ; Lost fanout                            ;
+; ihex:hex|buffer~1018                     ; Lost fanout                            ;
+; ihex:hex|buffer~1019                     ; Lost fanout                            ;
+; ihex:hex|buffer~1024                     ; Lost fanout                            ;
+; ihex:hex|buffer~1025                     ; Lost fanout                            ;
+; ihex:hex|buffer~1026                     ; Lost fanout                            ;
+; ihex:hex|buffer~1027                     ; Lost fanout                            ;
+; ihex:hex|buffer~1032                     ; Lost fanout                            ;
+; ihex:hex|buffer~1033                     ; Lost fanout                            ;
+; ihex:hex|buffer~1034                     ; Lost fanout                            ;
+; ihex:hex|buffer~1035                     ; Lost fanout                            ;
+; ihex:hex|buffer~1040                     ; Lost fanout                            ;
+; ihex:hex|buffer~1041                     ; Lost fanout                            ;
+; ihex:hex|buffer~1042                     ; Lost fanout                            ;
+; ihex:hex|buffer~1043                     ; Lost fanout                            ;
+; ihex:hex|buffer~1048                     ; Lost fanout                            ;
+; ihex:hex|buffer~1049                     ; Lost fanout                            ;
+; ihex:hex|buffer~1050                     ; Lost fanout                            ;
+; ihex:hex|buffer~1051                     ; Lost fanout                            ;
+; ihex:hex|buffer~1056                     ; Lost fanout                            ;
+; ihex:hex|buffer~1057                     ; Lost fanout                            ;
+; ihex:hex|buffer~1058                     ; Lost fanout                            ;
+; ihex:hex|buffer~1059                     ; Lost fanout                            ;
+; ihex:hex|buffer~1064                     ; Lost fanout                            ;
+; ihex:hex|buffer~1065                     ; Lost fanout                            ;
+; ihex:hex|buffer~1066                     ; Lost fanout                            ;
+; ihex:hex|buffer~1067                     ; Lost fanout                            ;
+; ihex:hex|buffer~1072                     ; Lost fanout                            ;
+; ihex:hex|buffer~1073                     ; Lost fanout                            ;
+; ihex:hex|buffer~1074                     ; Lost fanout                            ;
+; ihex:hex|buffer~1075                     ; Lost fanout                            ;
+; ihex:hex|buffer~1080                     ; Lost fanout                            ;
+; ihex:hex|buffer~1081                     ; Lost fanout                            ;
+; ihex:hex|buffer~1082                     ; Lost fanout                            ;
+; ihex:hex|buffer~1083                     ; Lost fanout                            ;
+; ihex:hex|buffer~1088                     ; Lost fanout                            ;
+; ihex:hex|buffer~1089                     ; Lost fanout                            ;
+; ihex:hex|buffer~1090                     ; Lost fanout                            ;
+; ihex:hex|buffer~1091                     ; Lost fanout                            ;
+; ihex:hex|buffer~1096                     ; Lost fanout                            ;
+; ihex:hex|buffer~1097                     ; Lost fanout                            ;
+; ihex:hex|buffer~1098                     ; Lost fanout                            ;
+; ihex:hex|buffer~1099                     ; Lost fanout                            ;
+; ihex:hex|buffer~1104                     ; Lost fanout                            ;
+; ihex:hex|buffer~1105                     ; Lost fanout                            ;
+; ihex:hex|buffer~1106                     ; Lost fanout                            ;
+; ihex:hex|buffer~1107                     ; Lost fanout                            ;
+; ihex:hex|buffer~1112                     ; Lost fanout                            ;
+; ihex:hex|buffer~1113                     ; Lost fanout                            ;
+; ihex:hex|buffer~1114                     ; Lost fanout                            ;
+; ihex:hex|buffer~1115                     ; Lost fanout                            ;
+; ihex:hex|buffer~1120                     ; Lost fanout                            ;
+; ihex:hex|buffer~1121                     ; Lost fanout                            ;
+; ihex:hex|buffer~1122                     ; Lost fanout                            ;
+; ihex:hex|buffer~1123                     ; Lost fanout                            ;
+; ihex:hex|buffer~1128                     ; Lost fanout                            ;
+; ihex:hex|buffer~1129                     ; Lost fanout                            ;
+; ihex:hex|buffer~1130                     ; Lost fanout                            ;
+; ihex:hex|buffer~1131                     ; Lost fanout                            ;
+; ihex:hex|buffer~1136                     ; Lost fanout                            ;
+; ihex:hex|buffer~1137                     ; Lost fanout                            ;
+; ihex:hex|buffer~1138                     ; Lost fanout                            ;
+; ihex:hex|buffer~1139                     ; Lost fanout                            ;
+; ihex:hex|buffer~1144                     ; Lost fanout                            ;
+; ihex:hex|buffer~1145                     ; Lost fanout                            ;
+; ihex:hex|buffer~1146                     ; Lost fanout                            ;
+; ihex:hex|buffer~1147                     ; Lost fanout                            ;
+; ihex:hex|buffer~1152                     ; Lost fanout                            ;
+; ihex:hex|buffer~1153                     ; Lost fanout                            ;
+; ihex:hex|buffer~1154                     ; Lost fanout                            ;
+; ihex:hex|buffer~1155                     ; Lost fanout                            ;
+; ihex:hex|buffer~1160                     ; Lost fanout                            ;
+; ihex:hex|buffer~1161                     ; Lost fanout                            ;
+; ihex:hex|buffer~1162                     ; Lost fanout                            ;
+; ihex:hex|buffer~1163                     ; Lost fanout                            ;
+; ihex:hex|buffer~1168                     ; Lost fanout                            ;
+; ihex:hex|buffer~1169                     ; Lost fanout                            ;
+; ihex:hex|buffer~1170                     ; Lost fanout                            ;
+; ihex:hex|buffer~1171                     ; Lost fanout                            ;
+; ihex:hex|buffer~1176                     ; Lost fanout                            ;
+; ihex:hex|buffer~1177                     ; Lost fanout                            ;
+; ihex:hex|buffer~1178                     ; Lost fanout                            ;
+; ihex:hex|buffer~1179                     ; Lost fanout                            ;
+; ihex:hex|buffer~1184                     ; Lost fanout                            ;
+; ihex:hex|buffer~1185                     ; Lost fanout                            ;
+; ihex:hex|buffer~1186                     ; Lost fanout                            ;
+; ihex:hex|buffer~1187                     ; Lost fanout                            ;
+; ihex:hex|buffer~1192                     ; Lost fanout                            ;
+; ihex:hex|buffer~1193                     ; Lost fanout                            ;
+; ihex:hex|buffer~1194                     ; Lost fanout                            ;
+; ihex:hex|buffer~1195                     ; Lost fanout                            ;
+; ihex:hex|buffer~1200                     ; Lost fanout                            ;
+; ihex:hex|buffer~1201                     ; Lost fanout                            ;
+; ihex:hex|buffer~1202                     ; Lost fanout                            ;
+; ihex:hex|buffer~1203                     ; Lost fanout                            ;
+; ihex:hex|buffer~1208                     ; Lost fanout                            ;
+; ihex:hex|buffer~1209                     ; Lost fanout                            ;
+; ihex:hex|buffer~1210                     ; Lost fanout                            ;
+; ihex:hex|buffer~1211                     ; Lost fanout                            ;
+; ihex:hex|buffer~1216                     ; Lost fanout                            ;
+; ihex:hex|buffer~1217                     ; Lost fanout                            ;
+; ihex:hex|buffer~1218                     ; Lost fanout                            ;
+; ihex:hex|buffer~1219                     ; Lost fanout                            ;
+; ihex:hex|buffer~1224                     ; Lost fanout                            ;
+; ihex:hex|buffer~1225                     ; Lost fanout                            ;
+; ihex:hex|buffer~1226                     ; Lost fanout                            ;
+; ihex:hex|buffer~1227                     ; Lost fanout                            ;
+; ihex:hex|buffer~1232                     ; Lost fanout                            ;
+; ihex:hex|buffer~1233                     ; Lost fanout                            ;
+; ihex:hex|buffer~1234                     ; Lost fanout                            ;
+; ihex:hex|buffer~1235                     ; Lost fanout                            ;
+; ihex:hex|buffer~1240                     ; Lost fanout                            ;
+; ihex:hex|buffer~1241                     ; Lost fanout                            ;
+; ihex:hex|buffer~1242                     ; Lost fanout                            ;
+; ihex:hex|buffer~1243                     ; Lost fanout                            ;
+; ihex:hex|buffer~1248                     ; Lost fanout                            ;
+; ihex:hex|buffer~1249                     ; Lost fanout                            ;
+; ihex:hex|buffer~1250                     ; Lost fanout                            ;
+; ihex:hex|buffer~1251                     ; Lost fanout                            ;
+; ihex:hex|buffer~1256                     ; Lost fanout                            ;
+; ihex:hex|buffer~1257                     ; Lost fanout                            ;
+; ihex:hex|buffer~1258                     ; Lost fanout                            ;
+; ihex:hex|buffer~1259                     ; Lost fanout                            ;
+; ihex:hex|buffer~1264                     ; Lost fanout                            ;
+; ihex:hex|buffer~1265                     ; Lost fanout                            ;
+; ihex:hex|buffer~1266                     ; Lost fanout                            ;
+; ihex:hex|buffer~1267                     ; Lost fanout                            ;
+; ihex:hex|buffer~1272                     ; Lost fanout                            ;
+; ihex:hex|buffer~1273                     ; Lost fanout                            ;
+; ihex:hex|buffer~1274                     ; Lost fanout                            ;
+; ihex:hex|buffer~1275                     ; Lost fanout                            ;
+; ihex:hex|buffer~1280                     ; Lost fanout                            ;
+; ihex:hex|buffer~1281                     ; Lost fanout                            ;
+; ihex:hex|buffer~1282                     ; Lost fanout                            ;
+; ihex:hex|buffer~1283                     ; Lost fanout                            ;
+; ihex:hex|buffer~1288                     ; Lost fanout                            ;
+; ihex:hex|buffer~1289                     ; Lost fanout                            ;
+; ihex:hex|buffer~1290                     ; Lost fanout                            ;
+; ihex:hex|buffer~1291                     ; Lost fanout                            ;
+; ihex:hex|buffer~1296                     ; Lost fanout                            ;
+; ihex:hex|buffer~1297                     ; Lost fanout                            ;
+; ihex:hex|buffer~1298                     ; Lost fanout                            ;
+; ihex:hex|buffer~1299                     ; Lost fanout                            ;
+; ihex:hex|buffer~1304                     ; Lost fanout                            ;
+; ihex:hex|buffer~1305                     ; Lost fanout                            ;
+; ihex:hex|buffer~1306                     ; Lost fanout                            ;
+; ihex:hex|buffer~1307                     ; Lost fanout                            ;
+; ihex:hex|buffer~1312                     ; Lost fanout                            ;
+; ihex:hex|buffer~1313                     ; Lost fanout                            ;
+; ihex:hex|buffer~1314                     ; Lost fanout                            ;
+; ihex:hex|buffer~1315                     ; Lost fanout                            ;
+; ihex:hex|buffer~1320                     ; Lost fanout                            ;
+; ihex:hex|buffer~1321                     ; Lost fanout                            ;
+; ihex:hex|buffer~1322                     ; Lost fanout                            ;
+; ihex:hex|buffer~1323                     ; Lost fanout                            ;
+; ihex:hex|buffer~1328                     ; Lost fanout                            ;
+; ihex:hex|buffer~1329                     ; Lost fanout                            ;
+; ihex:hex|buffer~1330                     ; Lost fanout                            ;
+; ihex:hex|buffer~1331                     ; Lost fanout                            ;
+; ihex:hex|buffer~1336                     ; Lost fanout                            ;
+; ihex:hex|buffer~1337                     ; Lost fanout                            ;
+; ihex:hex|buffer~1338                     ; Lost fanout                            ;
+; ihex:hex|buffer~1339                     ; Lost fanout                            ;
+; ihex:hex|buffer~1344                     ; Lost fanout                            ;
+; ihex:hex|buffer~1345                     ; Lost fanout                            ;
+; ihex:hex|buffer~1346                     ; Lost fanout                            ;
+; ihex:hex|buffer~1347                     ; Lost fanout                            ;
+; ihex:hex|buffer~1352                     ; Lost fanout                            ;
+; ihex:hex|buffer~1353                     ; Lost fanout                            ;
+; ihex:hex|buffer~1354                     ; Lost fanout                            ;
+; ihex:hex|buffer~1355                     ; Lost fanout                            ;
+; ihex:hex|buffer~1360                     ; Lost fanout                            ;
+; ihex:hex|buffer~1361                     ; Lost fanout                            ;
+; ihex:hex|buffer~1362                     ; Lost fanout                            ;
+; ihex:hex|buffer~1363                     ; Lost fanout                            ;
+; ihex:hex|buffer~1368                     ; Lost fanout                            ;
+; ihex:hex|buffer~1369                     ; Lost fanout                            ;
+; ihex:hex|buffer~1370                     ; Lost fanout                            ;
+; ihex:hex|buffer~1371                     ; Lost fanout                            ;
+; ihex:hex|buffer~1376                     ; Lost fanout                            ;
+; ihex:hex|buffer~1377                     ; Lost fanout                            ;
+; ihex:hex|buffer~1378                     ; Lost fanout                            ;
+; ihex:hex|buffer~1379                     ; Lost fanout                            ;
+; ihex:hex|buffer~1384                     ; Lost fanout                            ;
+; ihex:hex|buffer~1385                     ; Lost fanout                            ;
+; ihex:hex|buffer~1386                     ; Lost fanout                            ;
+; ihex:hex|buffer~1387                     ; Lost fanout                            ;
+; ihex:hex|buffer~1392                     ; Lost fanout                            ;
+; ihex:hex|buffer~1393                     ; Lost fanout                            ;
+; ihex:hex|buffer~1394                     ; Lost fanout                            ;
+; ihex:hex|buffer~1395                     ; Lost fanout                            ;
+; ihex:hex|buffer~1400                     ; Lost fanout                            ;
+; ihex:hex|buffer~1401                     ; Lost fanout                            ;
+; ihex:hex|buffer~1402                     ; Lost fanout                            ;
+; ihex:hex|buffer~1403                     ; Lost fanout                            ;
+; ihex:hex|buffer~1408                     ; Lost fanout                            ;
+; ihex:hex|buffer~1409                     ; Lost fanout                            ;
+; ihex:hex|buffer~1410                     ; Lost fanout                            ;
+; ihex:hex|buffer~1411                     ; Lost fanout                            ;
+; ihex:hex|buffer~1416                     ; Lost fanout                            ;
+; ihex:hex|buffer~1417                     ; Lost fanout                            ;
+; ihex:hex|buffer~1418                     ; Lost fanout                            ;
+; ihex:hex|buffer~1419                     ; Lost fanout                            ;
+; ihex:hex|buffer~1424                     ; Lost fanout                            ;
+; ihex:hex|buffer~1425                     ; Lost fanout                            ;
+; ihex:hex|buffer~1426                     ; Lost fanout                            ;
+; ihex:hex|buffer~1427                     ; Lost fanout                            ;
+; ihex:hex|buffer~1432                     ; Lost fanout                            ;
+; ihex:hex|buffer~1433                     ; Lost fanout                            ;
+; ihex:hex|buffer~1434                     ; Lost fanout                            ;
+; ihex:hex|buffer~1435                     ; Lost fanout                            ;
+; ihex:hex|buffer~1440                     ; Lost fanout                            ;
+; ihex:hex|buffer~1441                     ; Lost fanout                            ;
+; ihex:hex|buffer~1442                     ; Lost fanout                            ;
+; ihex:hex|buffer~1443                     ; Lost fanout                            ;
+; ihex:hex|buffer~1448                     ; Lost fanout                            ;
+; ihex:hex|buffer~1449                     ; Lost fanout                            ;
+; ihex:hex|buffer~1450                     ; Lost fanout                            ;
+; ihex:hex|buffer~1451                     ; Lost fanout                            ;
+; ihex:hex|buffer~1456                     ; Lost fanout                            ;
+; ihex:hex|buffer~1457                     ; Lost fanout                            ;
+; ihex:hex|buffer~1458                     ; Lost fanout                            ;
+; ihex:hex|buffer~1459                     ; Lost fanout                            ;
+; ihex:hex|buffer~1464                     ; Lost fanout                            ;
+; ihex:hex|buffer~1465                     ; Lost fanout                            ;
+; ihex:hex|buffer~1466                     ; Lost fanout                            ;
+; ihex:hex|buffer~1467                     ; Lost fanout                            ;
+; ihex:hex|buffer~1472                     ; Lost fanout                            ;
+; ihex:hex|buffer~1473                     ; Lost fanout                            ;
+; ihex:hex|buffer~1474                     ; Lost fanout                            ;
+; ihex:hex|buffer~1475                     ; Lost fanout                            ;
+; ihex:hex|buffer~1480                     ; Lost fanout                            ;
+; ihex:hex|buffer~1481                     ; Lost fanout                            ;
+; ihex:hex|buffer~1482                     ; Lost fanout                            ;
+; ihex:hex|buffer~1483                     ; Lost fanout                            ;
+; ihex:hex|buffer~1488                     ; Lost fanout                            ;
+; ihex:hex|buffer~1489                     ; Lost fanout                            ;
+; ihex:hex|buffer~1490                     ; Lost fanout                            ;
+; ihex:hex|buffer~1491                     ; Lost fanout                            ;
+; ihex:hex|buffer~1496                     ; Lost fanout                            ;
+; ihex:hex|buffer~1497                     ; Lost fanout                            ;
+; ihex:hex|buffer~1498                     ; Lost fanout                            ;
+; ihex:hex|buffer~1499                     ; Lost fanout                            ;
+; ihex:hex|buffer~1504                     ; Lost fanout                            ;
+; ihex:hex|buffer~1505                     ; Lost fanout                            ;
+; ihex:hex|buffer~1506                     ; Lost fanout                            ;
+; ihex:hex|buffer~1507                     ; Lost fanout                            ;
+; ihex:hex|buffer~1512                     ; Lost fanout                            ;
+; ihex:hex|buffer~1513                     ; Lost fanout                            ;
+; ihex:hex|buffer~1514                     ; Lost fanout                            ;
+; ihex:hex|buffer~1515                     ; Lost fanout                            ;
+; ihex:hex|buffer~1520                     ; Lost fanout                            ;
+; ihex:hex|buffer~1521                     ; Lost fanout                            ;
+; ihex:hex|buffer~1522                     ; Lost fanout                            ;
+; ihex:hex|buffer~1523                     ; Lost fanout                            ;
+; ihex:hex|buffer~1528                     ; Lost fanout                            ;
+; ihex:hex|buffer~1529                     ; Lost fanout                            ;
+; ihex:hex|buffer~1530                     ; Lost fanout                            ;
+; ihex:hex|buffer~1531                     ; Lost fanout                            ;
+; ihex:hex|buffer~1536                     ; Lost fanout                            ;
+; ihex:hex|buffer~1537                     ; Lost fanout                            ;
+; ihex:hex|buffer~1538                     ; Lost fanout                            ;
+; ihex:hex|buffer~1539                     ; Lost fanout                            ;
+; ihex:hex|buffer~1544                     ; Lost fanout                            ;
+; ihex:hex|buffer~1545                     ; Lost fanout                            ;
+; ihex:hex|buffer~1546                     ; Lost fanout                            ;
+; ihex:hex|buffer~1547                     ; Lost fanout                            ;
+; ihex:hex|buffer~1552                     ; Lost fanout                            ;
+; ihex:hex|buffer~1553                     ; Lost fanout                            ;
+; ihex:hex|buffer~1554                     ; Lost fanout                            ;
+; ihex:hex|buffer~1555                     ; Lost fanout                            ;
+; ihex:hex|buffer~1560                     ; Lost fanout                            ;
+; ihex:hex|buffer~1561                     ; Lost fanout                            ;
+; ihex:hex|buffer~1562                     ; Lost fanout                            ;
+; ihex:hex|buffer~1563                     ; Lost fanout                            ;
+; ihex:hex|buffer~1568                     ; Lost fanout                            ;
+; ihex:hex|buffer~1569                     ; Lost fanout                            ;
+; ihex:hex|buffer~1570                     ; Lost fanout                            ;
+; ihex:hex|buffer~1571                     ; Lost fanout                            ;
+; ihex:hex|buffer~1576                     ; Lost fanout                            ;
+; ihex:hex|buffer~1577                     ; Lost fanout                            ;
+; ihex:hex|buffer~1578                     ; Lost fanout                            ;
+; ihex:hex|buffer~1579                     ; Lost fanout                            ;
+; ihex:hex|buffer~1584                     ; Lost fanout                            ;
+; ihex:hex|buffer~1585                     ; Lost fanout                            ;
+; ihex:hex|buffer~1586                     ; Lost fanout                            ;
+; ihex:hex|buffer~1587                     ; Lost fanout                            ;
+; ihex:hex|buffer~1592                     ; Lost fanout                            ;
+; ihex:hex|buffer~1593                     ; Lost fanout                            ;
+; ihex:hex|buffer~1594                     ; Lost fanout                            ;
+; ihex:hex|buffer~1595                     ; Lost fanout                            ;
+; ihex:hex|buffer~1600                     ; Lost fanout                            ;
+; ihex:hex|buffer~1601                     ; Lost fanout                            ;
+; ihex:hex|buffer~1602                     ; Lost fanout                            ;
+; ihex:hex|buffer~1603                     ; Lost fanout                            ;
+; ihex:hex|buffer~1608                     ; Lost fanout                            ;
+; ihex:hex|buffer~1609                     ; Lost fanout                            ;
+; ihex:hex|buffer~1610                     ; Lost fanout                            ;
+; ihex:hex|buffer~1611                     ; Lost fanout                            ;
+; ihex:hex|buffer~1616                     ; Lost fanout                            ;
+; ihex:hex|buffer~1617                     ; Lost fanout                            ;
+; ihex:hex|buffer~1618                     ; Lost fanout                            ;
+; ihex:hex|buffer~1619                     ; Lost fanout                            ;
+; ihex:hex|buffer~1624                     ; Lost fanout                            ;
+; ihex:hex|buffer~1625                     ; Lost fanout                            ;
+; ihex:hex|buffer~1626                     ; Lost fanout                            ;
+; ihex:hex|buffer~1627                     ; Lost fanout                            ;
+; ihex:hex|buffer~1632                     ; Lost fanout                            ;
+; ihex:hex|buffer~1633                     ; Lost fanout                            ;
+; ihex:hex|buffer~1634                     ; Lost fanout                            ;
+; ihex:hex|buffer~1635                     ; Lost fanout                            ;
+; ihex:hex|buffer~1640                     ; Lost fanout                            ;
+; ihex:hex|buffer~1641                     ; Lost fanout                            ;
+; ihex:hex|buffer~1642                     ; Lost fanout                            ;
+; ihex:hex|buffer~1643                     ; Lost fanout                            ;
+; ihex:hex|buffer~1648                     ; Lost fanout                            ;
+; ihex:hex|buffer~1649                     ; Lost fanout                            ;
+; ihex:hex|buffer~1650                     ; Lost fanout                            ;
+; ihex:hex|buffer~1651                     ; Lost fanout                            ;
+; ihex:hex|buffer~1656                     ; Lost fanout                            ;
+; ihex:hex|buffer~1657                     ; Lost fanout                            ;
+; ihex:hex|buffer~1658                     ; Lost fanout                            ;
+; ihex:hex|buffer~1659                     ; Lost fanout                            ;
+; ihex:hex|buffer~1664                     ; Lost fanout                            ;
+; ihex:hex|buffer~1665                     ; Lost fanout                            ;
+; ihex:hex|buffer~1666                     ; Lost fanout                            ;
+; ihex:hex|buffer~1667                     ; Lost fanout                            ;
+; ihex:hex|buffer~1672                     ; Lost fanout                            ;
+; ihex:hex|buffer~1673                     ; Lost fanout                            ;
+; ihex:hex|buffer~1674                     ; Lost fanout                            ;
+; ihex:hex|buffer~1675                     ; Lost fanout                            ;
+; ihex:hex|buffer~1680                     ; Lost fanout                            ;
+; ihex:hex|buffer~1681                     ; Lost fanout                            ;
+; ihex:hex|buffer~1682                     ; Lost fanout                            ;
+; ihex:hex|buffer~1683                     ; Lost fanout                            ;
+; ihex:hex|buffer~1688                     ; Lost fanout                            ;
+; ihex:hex|buffer~1689                     ; Lost fanout                            ;
+; ihex:hex|buffer~1690                     ; Lost fanout                            ;
+; ihex:hex|buffer~1691                     ; Lost fanout                            ;
+; ihex:hex|buffer~1696                     ; Lost fanout                            ;
+; ihex:hex|buffer~1697                     ; Lost fanout                            ;
+; ihex:hex|buffer~1698                     ; Lost fanout                            ;
+; ihex:hex|buffer~1699                     ; Lost fanout                            ;
+; ihex:hex|buffer~1704                     ; Lost fanout                            ;
+; ihex:hex|buffer~1705                     ; Lost fanout                            ;
+; ihex:hex|buffer~1706                     ; Lost fanout                            ;
+; ihex:hex|buffer~1707                     ; Lost fanout                            ;
+; ihex:hex|buffer~1712                     ; Lost fanout                            ;
+; ihex:hex|buffer~1713                     ; Lost fanout                            ;
+; ihex:hex|buffer~1714                     ; Lost fanout                            ;
+; ihex:hex|buffer~1715                     ; Lost fanout                            ;
+; ihex:hex|buffer~1720                     ; Lost fanout                            ;
+; ihex:hex|buffer~1721                     ; Lost fanout                            ;
+; ihex:hex|buffer~1722                     ; Lost fanout                            ;
+; ihex:hex|buffer~1723                     ; Lost fanout                            ;
+; ihex:hex|buffer~1728                     ; Lost fanout                            ;
+; ihex:hex|buffer~1729                     ; Lost fanout                            ;
+; ihex:hex|buffer~1730                     ; Lost fanout                            ;
+; ihex:hex|buffer~1731                     ; Lost fanout                            ;
+; ihex:hex|buffer~1736                     ; Lost fanout                            ;
+; ihex:hex|buffer~1737                     ; Lost fanout                            ;
+; ihex:hex|buffer~1738                     ; Lost fanout                            ;
+; ihex:hex|buffer~1739                     ; Lost fanout                            ;
+; ihex:hex|buffer~1744                     ; Lost fanout                            ;
+; ihex:hex|buffer~1745                     ; Lost fanout                            ;
+; ihex:hex|buffer~1746                     ; Lost fanout                            ;
+; ihex:hex|buffer~1747                     ; Lost fanout                            ;
+; ihex:hex|buffer~1752                     ; Lost fanout                            ;
+; ihex:hex|buffer~1753                     ; Lost fanout                            ;
+; ihex:hex|buffer~1754                     ; Lost fanout                            ;
+; ihex:hex|buffer~1755                     ; Lost fanout                            ;
+; ihex:hex|buffer~1760                     ; Lost fanout                            ;
+; ihex:hex|buffer~1761                     ; Lost fanout                            ;
+; ihex:hex|buffer~1762                     ; Lost fanout                            ;
+; ihex:hex|buffer~1763                     ; Lost fanout                            ;
+; ihex:hex|buffer~1768                     ; Lost fanout                            ;
+; ihex:hex|buffer~1769                     ; Lost fanout                            ;
+; ihex:hex|buffer~1770                     ; Lost fanout                            ;
+; ihex:hex|buffer~1771                     ; Lost fanout                            ;
+; ihex:hex|buffer~1776                     ; Lost fanout                            ;
+; ihex:hex|buffer~1777                     ; Lost fanout                            ;
+; ihex:hex|buffer~1778                     ; Lost fanout                            ;
+; ihex:hex|buffer~1779                     ; Lost fanout                            ;
+; ihex:hex|buffer~1784                     ; Lost fanout                            ;
+; ihex:hex|buffer~1785                     ; Lost fanout                            ;
+; ihex:hex|buffer~1786                     ; Lost fanout                            ;
+; ihex:hex|buffer~1787                     ; Lost fanout                            ;
+; ihex:hex|buffer~1792                     ; Lost fanout                            ;
+; ihex:hex|buffer~1793                     ; Lost fanout                            ;
+; ihex:hex|buffer~1794                     ; Lost fanout                            ;
+; ihex:hex|buffer~1795                     ; Lost fanout                            ;
+; ihex:hex|buffer~1800                     ; Lost fanout                            ;
+; ihex:hex|buffer~1801                     ; Lost fanout                            ;
+; ihex:hex|buffer~1802                     ; Lost fanout                            ;
+; ihex:hex|buffer~1803                     ; Lost fanout                            ;
+; ihex:hex|buffer~1808                     ; Lost fanout                            ;
+; ihex:hex|buffer~1809                     ; Lost fanout                            ;
+; ihex:hex|buffer~1810                     ; Lost fanout                            ;
+; ihex:hex|buffer~1811                     ; Lost fanout                            ;
+; ihex:hex|buffer~1816                     ; Lost fanout                            ;
+; ihex:hex|buffer~1817                     ; Lost fanout                            ;
+; ihex:hex|buffer~1818                     ; Lost fanout                            ;
+; ihex:hex|buffer~1819                     ; Lost fanout                            ;
+; ihex:hex|buffer~1824                     ; Lost fanout                            ;
+; ihex:hex|buffer~1825                     ; Lost fanout                            ;
+; ihex:hex|buffer~1826                     ; Lost fanout                            ;
+; ihex:hex|buffer~1827                     ; Lost fanout                            ;
+; ihex:hex|buffer~1832                     ; Lost fanout                            ;
+; ihex:hex|buffer~1833                     ; Lost fanout                            ;
+; ihex:hex|buffer~1834                     ; Lost fanout                            ;
+; ihex:hex|buffer~1835                     ; Lost fanout                            ;
+; ihex:hex|buffer~1840                     ; Lost fanout                            ;
+; ihex:hex|buffer~1841                     ; Lost fanout                            ;
+; ihex:hex|buffer~1842                     ; Lost fanout                            ;
+; ihex:hex|buffer~1843                     ; Lost fanout                            ;
+; ihex:hex|buffer~1848                     ; Lost fanout                            ;
+; ihex:hex|buffer~1849                     ; Lost fanout                            ;
+; ihex:hex|buffer~1850                     ; Lost fanout                            ;
+; ihex:hex|buffer~1851                     ; Lost fanout                            ;
+; ihex:hex|buffer~1856                     ; Lost fanout                            ;
+; ihex:hex|buffer~1857                     ; Lost fanout                            ;
+; ihex:hex|buffer~1858                     ; Lost fanout                            ;
+; ihex:hex|buffer~1859                     ; Lost fanout                            ;
+; ihex:hex|buffer~1864                     ; Lost fanout                            ;
+; ihex:hex|buffer~1865                     ; Lost fanout                            ;
+; ihex:hex|buffer~1866                     ; Lost fanout                            ;
+; ihex:hex|buffer~1867                     ; Lost fanout                            ;
+; ihex:hex|buffer~1872                     ; Lost fanout                            ;
+; ihex:hex|buffer~1873                     ; Lost fanout                            ;
+; ihex:hex|buffer~1874                     ; Lost fanout                            ;
+; ihex:hex|buffer~1875                     ; Lost fanout                            ;
+; ihex:hex|buffer~1880                     ; Lost fanout                            ;
+; ihex:hex|buffer~1881                     ; Lost fanout                            ;
+; ihex:hex|buffer~1882                     ; Lost fanout                            ;
+; ihex:hex|buffer~1883                     ; Lost fanout                            ;
+; ihex:hex|buffer~1888                     ; Lost fanout                            ;
+; ihex:hex|buffer~1889                     ; Lost fanout                            ;
+; ihex:hex|buffer~1890                     ; Lost fanout                            ;
+; ihex:hex|buffer~1891                     ; Lost fanout                            ;
+; ihex:hex|buffer~1896                     ; Lost fanout                            ;
+; ihex:hex|buffer~1897                     ; Lost fanout                            ;
+; ihex:hex|buffer~1898                     ; Lost fanout                            ;
+; ihex:hex|buffer~1899                     ; Lost fanout                            ;
+; ihex:hex|buffer~1904                     ; Lost fanout                            ;
+; ihex:hex|buffer~1905                     ; Lost fanout                            ;
+; ihex:hex|buffer~1906                     ; Lost fanout                            ;
+; ihex:hex|buffer~1907                     ; Lost fanout                            ;
+; ihex:hex|buffer~1912                     ; Lost fanout                            ;
+; ihex:hex|buffer~1913                     ; Lost fanout                            ;
+; ihex:hex|buffer~1914                     ; Lost fanout                            ;
+; ihex:hex|buffer~1915                     ; Lost fanout                            ;
+; ihex:hex|buffer~1920                     ; Lost fanout                            ;
+; ihex:hex|buffer~1921                     ; Lost fanout                            ;
+; ihex:hex|buffer~1922                     ; Lost fanout                            ;
+; ihex:hex|buffer~1923                     ; Lost fanout                            ;
+; ihex:hex|buffer~1928                     ; Lost fanout                            ;
+; ihex:hex|buffer~1929                     ; Lost fanout                            ;
+; ihex:hex|buffer~1930                     ; Lost fanout                            ;
+; ihex:hex|buffer~1931                     ; Lost fanout                            ;
+; ihex:hex|buffer~1936                     ; Lost fanout                            ;
+; ihex:hex|buffer~1937                     ; Lost fanout                            ;
+; ihex:hex|buffer~1938                     ; Lost fanout                            ;
+; ihex:hex|buffer~1939                     ; Lost fanout                            ;
+; ihex:hex|buffer~1944                     ; Lost fanout                            ;
+; ihex:hex|buffer~1945                     ; Lost fanout                            ;
+; ihex:hex|buffer~1946                     ; Lost fanout                            ;
+; ihex:hex|buffer~1947                     ; Lost fanout                            ;
+; ihex:hex|buffer~1952                     ; Lost fanout                            ;
+; ihex:hex|buffer~1953                     ; Lost fanout                            ;
+; ihex:hex|buffer~1954                     ; Lost fanout                            ;
+; ihex:hex|buffer~1955                     ; Lost fanout                            ;
+; ihex:hex|buffer~1960                     ; Lost fanout                            ;
+; ihex:hex|buffer~1961                     ; Lost fanout                            ;
+; ihex:hex|buffer~1962                     ; Lost fanout                            ;
+; ihex:hex|buffer~1963                     ; Lost fanout                            ;
+; ihex:hex|buffer~1968                     ; Lost fanout                            ;
+; ihex:hex|buffer~1969                     ; Lost fanout                            ;
+; ihex:hex|buffer~1970                     ; Lost fanout                            ;
+; ihex:hex|buffer~1971                     ; Lost fanout                            ;
+; ihex:hex|buffer~1976                     ; Lost fanout                            ;
+; ihex:hex|buffer~1977                     ; Lost fanout                            ;
+; ihex:hex|buffer~1978                     ; Lost fanout                            ;
+; ihex:hex|buffer~1979                     ; Lost fanout                            ;
+; ihex:hex|buffer~1984                     ; Lost fanout                            ;
+; ihex:hex|buffer~1985                     ; Lost fanout                            ;
+; ihex:hex|buffer~1986                     ; Lost fanout                            ;
+; ihex:hex|buffer~1987                     ; Lost fanout                            ;
+; ihex:hex|buffer~1992                     ; Lost fanout                            ;
+; ihex:hex|buffer~1993                     ; Lost fanout                            ;
+; ihex:hex|buffer~1994                     ; Lost fanout                            ;
+; ihex:hex|buffer~1995                     ; Lost fanout                            ;
+; ihex:hex|buffer~2000                     ; Lost fanout                            ;
+; ihex:hex|buffer~2001                     ; Lost fanout                            ;
+; ihex:hex|buffer~2002                     ; Lost fanout                            ;
+; ihex:hex|buffer~2003                     ; Lost fanout                            ;
+; ihex:hex|buffer~2008                     ; Lost fanout                            ;
+; ihex:hex|buffer~2009                     ; Lost fanout                            ;
+; ihex:hex|buffer~2010                     ; Lost fanout                            ;
+; ihex:hex|buffer~2011                     ; Lost fanout                            ;
+; ihex:hex|buffer~2016                     ; Lost fanout                            ;
+; ihex:hex|buffer~2017                     ; Lost fanout                            ;
+; ihex:hex|buffer~2018                     ; Lost fanout                            ;
+; ihex:hex|buffer~2019                     ; Lost fanout                            ;
+; ihex:hex|buffer~2024                     ; Lost fanout                            ;
+; ihex:hex|buffer~2025                     ; Lost fanout                            ;
+; ihex:hex|buffer~2026                     ; Lost fanout                            ;
+; ihex:hex|buffer~2027                     ; Lost fanout                            ;
+; ihex:hex|buffer~2032                     ; Lost fanout                            ;
+; ihex:hex|buffer~2033                     ; Lost fanout                            ;
+; ihex:hex|buffer~2034                     ; Lost fanout                            ;
+; ihex:hex|buffer~2035                     ; Lost fanout                            ;
+; ihex:hex|buffer~2040                     ; Lost fanout                            ;
+; ihex:hex|buffer~2041                     ; Lost fanout                            ;
+; ihex:hex|buffer~2042                     ; Lost fanout                            ;
+; ihex:hex|buffer~2043                     ; Lost fanout                            ;
+; Total Number of Removed Registers = 1038 ;                                        ;
++------------------------------------------+----------------------------------------+
 
 
-+-------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                         ;
-+-----------------------+--------------------+----------------------------------------+
-; Register name         ; Reason for Removal ; Registers Removed due to This Register ;
-+-----------------------+--------------------+----------------------------------------+
-; ihex:hex|o_tx_data[7] ; Lost Fanouts       ; ihex:hex|computed_sum[7]               ;
-+-----------------------+--------------------+----------------------------------------+
++--------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                ;
++-----------------------+---------------------------+----------------------------------------+
+; Register name         ; Reason for Removal        ; Registers Removed due to This Register ;
++-----------------------+---------------------------+----------------------------------------+
+; ihex:hex|o_tx_data[7] ; Stuck at GND              ; uart_tx:tx|data[7]                     ;
+;                       ; due to stuck port data_in ;                                        ;
+; ihex:hex|o_tx_data[6] ; Stuck at VCC              ; uart_tx:tx|data[6]                     ;
+;                       ; due to stuck port data_in ;                                        ;
+; ihex:hex|o_tx_data[5] ; Stuck at GND              ; uart_tx:tx|data[5]                     ;
+;                       ; due to stuck port data_in ;                                        ;
+; ihex:hex|o_tx_data[4] ; Stuck at GND              ; uart_tx:tx|data[4]                     ;
+;                       ; due to stuck port data_in ;                                        ;
+; ihex:hex|o_tx_data[0] ; Stuck at VCC              ; uart_tx:tx|data[0]                     ;
+;                       ; due to stuck port data_in ;                                        ;
++-----------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -252,12 +1292,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 104   ;
-; Number of registers using Synchronous Clear  ; 32    ;
+; Total registers                              ; 1158  ;
+; Number of registers using Synchronous Clear  ; 64    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 88    ;
+; Number of registers using Clock Enable       ; 1143  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -268,8 +1308,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
 ; uart_rx:rx|internal_state[1]           ; 9       ;
-; uart_rx:rx|i_rx_prev                   ; 3       ;
 ; uart_rx:rx|i_rx_db                     ; 5       ;
+; uart_rx:rx|i_rx_prev                   ; 3       ;
 ; uart_rx:rx|i_rx_int                    ; 1       ;
 ; Total number of inverted registers = 4 ;         ;
 +----------------------------------------+---------+
@@ -280,12 +1320,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|uart_tx:tx|state[1]          ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|ihex:hex|len[0]              ;
-; 6:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |top|uart_rx:rx|clk_counter[28]   ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |top|uart_rx:rx|internal_state[2] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|ihex:hex|len[1]              ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|ihex:hex|cmp_sum[2]          ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|ihex:hex|addr[14]            ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |top|uart_tx:tx|counter[3]        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|ihex:hex|cmd[6]              ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top|ihex:hex|addr[4]             ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |top|uart_tx:tx|state[0]          ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |top|uart_rx:rx|clk_counter[5]    ;
+; 18:1               ; 8 bits    ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |top|ihex:hex|computed_sum[3]     ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |top|uart_rx:rx|internal_state[3] ;
 ; 11:1               ; 8 bits    ; 56 LEs        ; 8 LEs                ; 48 LEs                 ; Yes        ; |top|ihex:hex|buffer_fill[2]      ;
-; 23:1               ; 3 bits    ; 45 LEs        ; 33 LEs               ; 12 LEs                 ; Yes        ; |top|ihex:hex|state[3]            ;
+; 23:1               ; 3 bits    ; 45 LEs        ; 33 LEs               ; 12 LEs                 ; Yes        ; |top|ihex:hex|state[0]            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
 
 
@@ -316,7 +1362,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -326,7 +1372,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-    Info: Processing started: Tue Jan 14 21:41:55 2020
+    Info: Processing started: Tue Jan 14 22:13:54 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ihex -c top
 Info (20030): Parallel compilation is enabled and will use 16 of the 32 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file /home/codetector/projects/tl69/uart_ihex/rtl/uart_tx.sv
@@ -354,26 +1400,28 @@ Warning (10230): Verilog HDL assignment warning at uart_tx.sv(60): truncated val
 Warning (10230): Verilog HDL assignment warning at uart_tx.sv(62): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "ihex" for hierarchy "ihex:hex"
 Warning (10230): Verilog HDL assignment warning at ihex.sv(53): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(71): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(64): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(72): truncated value with size 32 to match size of target (4)
 Warning (10272): Verilog HDL Case Statement warning at ihex.sv(30): case item expression covers a value already covered by a previous case item
-Warning (10230): Verilog HDL assignment warning at ihex.sv(75): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(82): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(84): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(87): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(91): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(94): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(98): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(101): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(105): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(112): truncated value with size 32 to match size of target (8)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(114): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(121): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(124): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(130): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(134): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at ihex.sv(137): truncated value with size 32 to match size of target (4)
-Warning (10034): Output port "o_tx_stb" at ihex.sv(13) has no driver
+Warning (10230): Verilog HDL assignment warning at ihex.sv(76): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(83): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(85): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(88): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(92): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(95): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(99): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(102): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(106): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(113): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(115): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(122): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(125): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(131): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(135): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ihex.sv(138): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "sevenSegmentDisp" for hierarchy "sevenSegmentDisp:seg2"
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "ihex:hex|buffer" is uninferred due to asynchronous read logic
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "o_sseg[1][0]" is stuck at GND
     Warning (13410): Pin "o_sseg[1][1]" is stuck at GND
@@ -389,17 +1437,17 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "o_sseg[0][4]" is stuck at GND
     Warning (13410): Pin "o_sseg[0][5]" is stuck at GND
     Warning (13410): Pin "o_sseg[0][6]" is stuck at GND
-Info (17049): 28 registers lost all their fanouts during netlist optimizations.
+Info (17049): 1024 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 255 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2371 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 22 output pins
-    Info (21061): Implemented 230 logic cells
+    Info (21061): Implemented 2346 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 45 warnings
-    Info: Peak virtual memory: 608 megabytes
-    Info: Processing ended: Tue Jan 14 21:41:56 2020
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 611 megabytes
+    Info: Processing ended: Tue Jan 14 22:13:58 2020
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 
