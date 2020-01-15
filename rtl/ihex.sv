@@ -8,6 +8,8 @@
     S: 32bit mode offset Set
     M: Malformed Command
     R: END OF FILE, offset reset;
+    W: Wishbone Error;
+    K: Write Complete
 */
 
 module ihex(
@@ -73,6 +75,17 @@ reg filled_high;
 reg [7:0] cmp_sum;
 reg [15:0] addr_offset; initial addr_offset = 0; // 32bit mode offset
 wire [7:0] computed_sum_tcmp = (~computed_sum + 1); // 2's complement of computed_sum
+wire [15:0] write_addr = addr + buffer_fill;
+
+reg [3:0] wb_sel;
+reg [29:0] wb_addr;
+reg [31:0] wb_mosi_data;
+
+assign wb.stb = state == EXEC_WB_REQ;
+assign wb.cyc = (state == EXEC_WB_REQ || state == EXEC_WB_WAIT);
+assign wb.sel = wb_sel;
+assign wb.addr = wb_addr;
+assign wb.mosi_data = wb_mosi_data;
 
 always @(posedge i_clk) begin
     if (i_rx_stb) begin
@@ -141,7 +154,29 @@ always @(posedge i_clk) begin
             if (o_tx_data <= (computed_sum_tcmp == cmp_sum)) begin
                 // Check Command Mode and Execute
                 case(cmd)
-                    8'h1: begin// END OF FILE
+                    8'h0: begin
+                        if (len > 0) begin // WRITE
+                            buffer_fill <= 1;
+                            wb_addr <= {addr_offset, addr[15:2]};
+                            case(addr[1:0])
+                                2'h3: wb_sel <= 4'b0001;
+                                2'h2: wb_sel <= 4'b0010;
+                                2'h1: wb_sel <= 4'b0100;
+                                2'h0: wb_sel <= 4'b1000;
+                            endcase
+                            case(addr[1:0])
+                                2'h0: wb_mosi_data <= {buffer[0], 24'h0};
+                                2'h1: wb_mosi_data <= {8'h0, buffer[0], 16'h0};
+                                2'h2: wb_mosi_data <= {16'h0, buffer[0], 8'h0};
+                                2'h3: wb_mosi_data <= {24'h0, buffer[0]};
+                            endcase
+                            state <= EXEC_WB_REQ;
+                        end else begin
+                            o_tx_data <= "K";
+                            state <= EXEC_ACK;
+                        end
+                    end
+                    8'h1: begin // END OF FILE
                         addr_offset <= 0;
                         o_tx_data <= "R";
                         state <= EXEC_ACK;
@@ -163,6 +198,66 @@ always @(posedge i_clk) begin
             end else begin
                 o_tx_data <= "E";
                 state <= EXEC_ACK;                
+            end
+        end
+    end
+    if (state == EXEC_WB_REQ) begin
+        if (!wb.stall) begin
+            if (wb.err) begin
+                o_tx_data <= "W";
+                state <= EXEC_ACK;
+            end
+            else if (wb.ack) begin
+                if (buffer_fill < len) begin
+                    buffer_fill <= buffer_fill + 1; // INC Buffer Fill
+                    wb_addr <= {addr_offset, write_addr[15:2]};
+                    case(write_addr[1:0])
+                        2'h3: wb_sel <= 4'b0001;
+                        2'h2: wb_sel <= 4'b0010;
+                        2'h1: wb_sel <= 4'b0100;
+                        2'h0: wb_sel <= 4'b1000;
+                    endcase
+                    case(write_addr[1:0])
+                        2'h0: wb_mosi_data <= {buffer[buffer_fill], 24'h0};
+                        2'h1: wb_mosi_data <= {8'h0, buffer[buffer_fill], 16'h0};
+                        2'h2: wb_mosi_data <= {16'h0, buffer[buffer_fill], 8'h0};
+                        2'h3: wb_mosi_data <= {24'h0, buffer[buffer_fill]};
+                    endcase
+                    state <= EXEC_WB_REQ;
+                end else begin
+                    o_tx_data <= "K";
+                    state <= EXEC_ACK;
+                end
+            end else begin
+                state <= EXEC_WB_WAIT;
+            end
+        end
+    end
+    if (state == EXEC_WB_WAIT) begin
+        if (!wb.stall && wb.err) begin
+                o_tx_data <= "W";
+                state <= EXEC_ACK;
+        end
+        else if (!wb.stall && wb.ack) begin
+            if (buffer_fill < len) begin
+                buffer_fill <= buffer_fill + 1; // INC Buffer Fill
+                wb_addr <= {addr_offset, write_addr[15:2]};
+                case(write_addr[1:0])
+                    2'h3: wb_sel <= 4'b0001;
+                    2'h2: wb_sel <= 4'b0010;
+                    2'h1: wb_sel <= 4'b0100;
+                    2'h0: wb_sel <= 4'b1000;
+                endcase
+                case(write_addr[1:0])
+                    2'h0: wb_mosi_data <= {buffer[buffer_fill], 24'h0};
+                    2'h1: wb_mosi_data <= {8'h0, buffer[buffer_fill], 16'h0};
+                    2'h2: wb_mosi_data <= {16'h0, buffer[buffer_fill], 8'h0};
+                    2'h3: wb_mosi_data <= {24'h0, buffer[buffer_fill]};
+                endcase
+                state <= EXEC_WB_REQ;
+            end else begin
+                o_tx_data <= "K";
+                state <= EXEC_ACK;
             end
         end
     end
