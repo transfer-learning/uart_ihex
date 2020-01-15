@@ -5,10 +5,9 @@ mode prove
 smtbmc yices
 
 [script]
-read -formal -sv ihex.sv
-prep -top ihex
+read_verilog -formal -sv *.sv
+prep -flatten -top ihex
 
 [files]
+../rtl/wishbone.sv
 ../rtl/ihex.sv
-
-

@@ -1,17 +1,27 @@
-module ihex(i_clk, i_reset,
-i_rx_data, i_rx_stb,
-o_tx_data, o_tx_stb, i_tx_busy,
-state
+`include "wishbone.sv"
+/*
+    Processes Intel Hex and Response with Single Letter ACK
+    -------
+    ACK Codes
+    E: Checksum Error
+    U: Unknown Command
+    S: 32bit mode offset Set
+    M: Malformed Command
+    R: END OF FILE, offset reset;
+*/
+
+module ihex(
+    input wire i_clk, i_reset,
+    input wire [7:0] i_rx_data,
+    input wire i_rx_stb,
+    output reg [7:0] o_tx_data,
+    output wire o_tx_stb,
+    input wire i_tx_busy,
+    wishbone.master wb
 );
 
-input wire i_clk, i_reset;
 
-input wire [7:0] i_rx_data;
-input wire i_rx_stb;
-
-output reg [7:0] o_tx_data;
-output wire o_tx_stb = state == EXEC_ACK;
-input wire i_tx_busy;
+assign o_tx_stb = state == EXEC_ACK;
 
 function [3:0] hex_to_val;
 input [7:0] ascii;
@@ -45,10 +55,10 @@ localparam  IDLE=0,
             ADDR1=5, ADDR2=6, ADDR3=7, ADDR4=8,
             EXEC=9, EXEC2=10,
             CHKSUM=11, CHKSUM2=12,
-            EXEC_ACK=13
+            EXEC_ACK=13, EXEC_WB_REQ=14, EXEC_WB_WAIT=15
 ;
 
-output reg [3:0] state;
+reg [3:0] state;
 initial begin
     state = IDLE;
 end
@@ -61,7 +71,8 @@ reg [15:0] addr;
 reg [7:0] buffer_fill;
 reg filled_high;
 reg [7:0] cmp_sum;
-wire [7:0] computed_sum_tcmp = (~computed_sum + 1);
+reg [15:0] addr_offset; initial addr_offset = 0; // 32bit mode offset
+wire [7:0] computed_sum_tcmp = (~computed_sum + 1); // 2's complement of computed_sum
 
 always @(posedge i_clk) begin
     if (i_rx_stb) begin
@@ -127,8 +138,32 @@ always @(posedge i_clk) begin
     end
     if (state == EXEC2) begin
         if (!i_tx_busy) begin
-            o_tx_data <= (computed_sum_tcmp == cmp_sum) ? "K" : "E";
-            state <= EXEC_ACK;
+            if (o_tx_data <= (computed_sum_tcmp == cmp_sum)) begin
+                // Check Command Mode and Execute
+                case(cmd)
+                    8'h1: begin// END OF FILE
+                        addr_offset <= 0;
+                        o_tx_data <= "R";
+                        state <= EXEC_ACK;
+                    end
+                    8'h4: // Offset SET
+                        if (len == 8'h2) begin
+                            addr_offset <= { buffer[0], buffer[1] };
+                            o_tx_data <= "S";
+                            state <= EXEC_ACK;
+                        end else begin
+                            o_tx_data <= "M";
+                            state <= EXEC_ACK;
+                        end
+                    default: begin
+                        o_tx_data <= "U";
+                        state <= EXEC_ACK;
+                    end
+                endcase
+            end else begin
+                o_tx_data <= "E";
+                state <= EXEC_ACK;                
+            end
         end
     end
     if (state == EXEC_ACK) begin
