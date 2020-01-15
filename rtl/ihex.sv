@@ -1,6 +1,7 @@
 module ihex(i_clk, i_reset,
 i_rx_data, i_rx_stb,
-o_tx_data, o_tx_stb, i_tx_busy
+o_tx_data, o_tx_stb, i_tx_busy,
+state
 );
 
 input wire i_clk, i_reset;
@@ -47,7 +48,7 @@ localparam  IDLE=0,
             EXEC_ACK=13
 ;
 
-integer state;
+output reg [3:0] state;
 initial begin
     state = IDLE;
 end
@@ -131,6 +132,9 @@ always @(posedge i_clk) begin
     end
     if (state == EXEC_ACK) begin
         state <= IDLE; // Operation Complete
+    end
+    if (i_reset) begin
+        state <= IDLE;
     end
 end
 
